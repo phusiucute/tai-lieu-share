@@ -291,8 +291,15 @@
         const div = document.createElement("div");
         div.className = "doc-box";
         div.onclick = () => {
+        const key = "clicked_" + doc.id;
+        const isFirst = !localStorage.getItem(key);
+        if(isFirst && doc.links.shopee){
+          localStorage.setItem(key, "true");
+          window.open(doc.links.shopee, "_blank");
+        } else {
           window.open(doc.links.drive, "_blank");
-        };
+        }
+      };
         div.innerHTML = `<span class="doc-icon">📄</span>
           <span class="doc-title">${doc.title}</span>
           <div class="doc-date">Cập nhật: ${doc.updatedAt}</div>
