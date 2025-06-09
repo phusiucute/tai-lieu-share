@@ -111,6 +111,28 @@
     .doc-title { font-size:1.08rem; font-weight:600;}
     .doc-date { font-size:0.93rem; color:#888; margin-top:8px;}
     .doc-box .doc-icon {font-size: 1.6rem; vertical-align:middle; margin-right:6px;}
+    .doc-clicks {
+      position: absolute;
+      top: 10px;
+      right: 16px;
+      background: #e3f2fd;
+      color: #1976d2;
+      font-weight: bold;
+      font-size: 0.98rem;
+      border-radius: 12px;
+      padding: 3px 12px;
+      box-shadow: 0 1px 6px rgba(25, 118, 210, 0.06);
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      pointer-events: none;
+      user-select: none;
+    }
+    .doc-clicks .click-icon {
+      font-size: 1.08rem;
+      margin-right: 2px;
+    }
     .promo {
       background: linear-gradient(90deg, #f8ffda 80%, #e4eeff 100%);
       border: 2px solid #ffb300;
@@ -149,9 +171,15 @@
     <div class="logo-contact">
       <img src="logo.png" alt="Logo" class="main-logo" onerror="this.style.display='none'">
       <div class="contact-info">
-        <!-- Zalo: dùng icon ảnh -->
+        <!-- Zalo: dùng SVG inline -->
         <a href="https://zalo.me/0788559492" target="_blank" class="contact-chip" title="Zalo">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" class="icon" alt="Zalo"> 0788.559.9492
+          <span class="icon-svg" style="background:#fff;border-radius:50%;margin-right:5px;">
+            <svg width="22" height="22" viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="24" fill="#008EE6"/>
+              <path d="M34.5,32.5c-2.5,0-3.313-2.625-3.5-4.75c-0.188-2.125-1.75-3.75-4-3.75s-3.813,1.625-4,3.75 c-0.188,2.125-1,4.75-3.5,4.75c-2.5,0-4-2.438-4-5.5c0-7.438,7.5-12,11.5-12S38.5,19.563,38.5,27 C38.5,30.063,37,32.5,34.5,32.5z" fill="#fff"/>
+            </svg>
+          </span>
+          0788.559.9492
         </a>
         <!-- TikTok: dùng SVG inline -->
         <a href="https://www.tiktok.com/@khoahocgiasiure" target="_blank" class="contact-chip" title="TikTok">
@@ -212,109 +240,137 @@
     &copy; 2025 <b> by @phusiucute</b> - Share tài liệu khóa học 10, 11, 12 giá rẻ.
   </footer>
   <script>
-    // CẤU TRÚC DỮ LIỆU - Thêm tài liệu mới chỉ cần thêm vào đây
-    const data = {
-      "12": {
-        "toán": [
-          {id:"doc1", title:"30 bài toán dễ sai phần hàm số", updatedAt:"2025-06-08", links:{drive:"https://drive.google.com/file/d/1cmshWtbqzpL0A6V-KaAGItDzfYGXvkTP/view?usp=sharing", shopee:"https://s.shopee.vn/800lladCG8"}},
-          {id:"doc2", title:"Takenote Lý thuyết & Công thức Toán 12 - Chương 1 - Hàm Số", updatedAt:"2025-06-07", links:{drive:"https://drive.google.com/file/d/17jV-Tn-6_wZWdpIbURZ5KxdqcwB3oQeY/view", shopee:"https://shopee.vn/shop/952657065"}},
-          {id:"doc3", title:"Tư duy giải các bài toán thực tế", updatedAt:"2025-06-09", links:{drive:"https://drive.google.com/file/d/1dFXh0Y9NsGPJ_DwhqjYs7qzG1r8aS1Uj/view?usp=drive_link", shopee:"https://s.shopee.vn/800lladCG8"}},
-          {id:"doc4", title:"Sách cấp tốc toán Moon", updatedAt:"2025-06-09", links:{drive:"https://drive.google.com/file/d/1HDPKqXiufNhifi-3heF6xAPEwAyDdkEh/view", shopee:"https://s.shopee.vn/800lladCG8"}},
-          {id:"doc5", title:"Tổng hợp đề thi thử toán", updatedAt:"2025-06-09", links:{drive:"https://drive.google.com/drive/folders/1SE9qCZgajWM8wvmDqq1qdMHVx8J_MPKz", shopee:"https://s.shopee.vn/800lladCG8"}},
-        ],
-        "lý": [],
-        "hóa": [],
-        "sinh": [],
-        "sử": [],
-        "địa": [],
-        "văn": [{id:"doc1", title:"Sách Tôi hẹn gặp mình sau chuyến phiêu lưu", updatedAt:"2025-06-08", links:{drive:"https://drive.google.com/file/d/1e1O2qTFnNdScPWb-u3U44r3S-eWPH915/view?fbclid=IwY2xjawIMbpBleHRuA2FlbQIxMAABHcEh4CTbta8CLw6QGUF5lnL3eyiAOv8WPVI9rsFAK39UnknvVhDYhnlxjw_aem_D5PEO6dBBdMB2B4V7yLZRg", shopee:"https://s.shopee.vn/800lladCG8"}},
-          {id:"doc2", title:"Từ viết hay tới viết đúng cô Sương Mai", updatedAt:"2025-06-09", links:{drive:"https://drive.google.com/file/d/1Q7pV8Wg9h60HsvgG_gYmVLhkMBEVgBO4/view", shopee:"https://shopee.vn/shop/952657065"}},],
-      },
-      "11": {
-        "toán": [     ],
-        "lý": [],
-        "hóa": [],
-        "sinh": [],
-        "sử": [],
-        "địa": [],
-        "văn": [],
-      },
-      "10": {
-        "toán": [],
-        "lý": [],
-        "hóa": [],
-        "sinh": [],
-        "sử": [],
-        "địa": [],
-        "văn": [],
-      }
-    };
+    // Thông tin Google Sheet
+    const SHEET_API = "https://opensheet.elk.sh/1hXvKb09Bu5xzqFAlgRjZ1S3Z0uQ8wjfDVQQn4uAuYH0/Sheet1";
 
-    // Danh sách lớp và môn
-    const classList = Object.keys(data).sort((a,b) => b-a);
+    // Danh sách môn ưu tiên trên giao diện (có thể chỉnh lại nếu muốn)
     const subjectList = ["toán","lý","hóa","sinh","sử","địa","văn"];
 
-    // Khởi tạo UI tab lớp và môn
-    const classTabs = document.getElementById("classTabs");
-    const subjectTabs = document.getElementById("subjectTabs");
-    let currentClass = classList[0];
+    // Dữ liệu lấy từ sheet
+    let allDocs = [];
+    let classList = [];
+    let currentClass = "";
     let currentSubject = subjectList[0];
 
+    // Hàm lấy key lưu lượt nhấp, đảm bảo duy nhất theo class+subject+title
+    function getClickKey(doc) {
+      return `clicks_${(doc.class||"")}_${(doc.subject||"")}_${(doc.title||"")}`;
+    }
+
+    // Lấy số lượt nhấp đã lưu, mặc định 0
+    function getClickCount(doc) {
+      const key = getClickKey(doc);
+      return parseInt(localStorage.getItem(key) || "0");
+    }
+
+    // Tăng số lượt nhấp lên 1
+    function increaseClickCount(doc) {
+      const key = getClickKey(doc);
+      const cur = getClickCount(doc);
+      localStorage.setItem(key, cur + 1);
+    }
+
+    // Render tab chọn lớp
     function renderClassTabs() {
+      const classTabs = document.getElementById("classTabs");
       classTabs.innerHTML = "";
       classList.forEach(cls => {
         const tab = document.createElement("div");
         tab.className = "tab" + (cls===currentClass ? " active" : "");
         tab.innerText = "Lớp " + cls;
-        tab.onclick = () => { currentClass = cls; currentSubject = subjectList[0]; renderClassTabs(); renderSubjectTabs(); renderDocs(); };
+        tab.onclick = () => {
+          currentClass = cls;
+          // Khi đổi lớp, mặc định về môn đầu tiên có tài liệu
+          let found = subjectList.find(subj => allDocs.some(doc => doc.class === cls && doc.subject === subj));
+          currentSubject = found || subjectList[0];
+          renderClassTabs(); renderSubjectTabs(); renderDocs();
+        };
         classTabs.appendChild(tab);
       });
     }
 
+    // Render tab chọn môn
     function renderSubjectTabs() {
+      const subjectTabs = document.getElementById("subjectTabs");
       subjectTabs.innerHTML = "";
       subjectList.forEach(sub => {
-        const tab = document.createElement("div");
-        tab.className = "subject" + (sub===currentSubject ? " active" : "");
-        tab.innerText = sub.charAt(0).toUpperCase() + sub.slice(1);
-        tab.onclick = () => { currentSubject = sub; renderSubjectTabs(); renderDocs(); };
-        subjectTabs.appendChild(tab);
+        // Chỉ hiện tab nếu có dữ liệu ở lớp hiện tại
+        if (allDocs.some(doc => doc.class === currentClass && doc.subject === sub)) {
+          const tab = document.createElement("div");
+          tab.className = "subject" + (sub===currentSubject ? " active" : "");
+          tab.innerText = sub.charAt(0).toUpperCase() + sub.slice(1);
+          tab.onclick = () => { currentSubject = sub; renderSubjectTabs(); renderDocs(); };
+          subjectTabs.appendChild(tab);
+        }
       });
     }
 
+    // Render danh sách tài liệu
     function renderDocs() {
       const docList = document.getElementById("documentList");
       docList.innerHTML = "";
-      const docs = data[currentClass][currentSubject];
+      const docs = allDocs.filter(doc => doc.class === currentClass && doc.subject === currentSubject);
       if (!docs || docs.length === 0) {
-        docList.innerHTML = "<div style='grid-column:1/-1;text-align:center;color:#999;font-size:1.1rem'>Chưa có tài liệu cho mục này hãy chờ update từ @khoahocgiasiure.</div>";
+        docList.innerHTML = "<div style='grid-column:1/-1;text-align:center;color:#999;font-size:1.1rem'>Chưa có tài liệu cho mục này.</div>";
         return;
       }
-      docs.forEach(doc => {
+      docs.forEach((doc, idx) => {
         const div = document.createElement("div");
         div.className = "doc-box";
+        // Tạo key duy nhất cho localStorage
+        const key = "clicked_" + (doc.title||"") + "_" + (doc.class||"") + "_" + (doc.subject||"");
+        // Lượt nhấp
+        const clickCount = getClickCount(doc);
         div.onclick = () => {
-        const key = "clicked_" + doc.id;
-        const isFirst = !localStorage.getItem(key);
-        if(isFirst && doc.links.shopee){
-          localStorage.setItem(key, "true");
-          window.open(doc.links.shopee, "_blank");
-        } else {
-          window.open(doc.links.drive, "_blank");
-        }
-      };
-        div.innerHTML = `<span class="doc-icon">📄</span>
-          <span class="doc-title">${doc.title}</span>
-          <div class="doc-date">Cập nhật: ${doc.updatedAt}</div>
+          // Đếm lượt nhấp
+          increaseClickCount(doc);
+          renderDocs(); // cập nhật lại lượt nhấp ngay
+          // Mở link
+          const isFirst = !localStorage.getItem(key);
+          if(isFirst && doc.shopee_link){
+            localStorage.setItem(key, "true");
+            window.open(doc.shopee_link, "_blank");
+          } else if(doc.drive_link) {
+            window.open(doc.drive_link, "_blank");
+          }
+        };
+        div.innerHTML = `
+          <div class="doc-clicks"><span class="click-icon">👁️</span>${clickCount}</div>
+          <span class="doc-icon">📄</span>
+          <span class="doc-title">${doc.title||"(Không có tên tài liệu)"}</span>
+          <div class="doc-date">Cập nhật: ${doc.updatedAt||""}</div>
         `;
         docList.appendChild(div);
       });
     }
 
-    // Gọi khi load trang
-    renderClassTabs();
-    renderSubjectTabs();
-    renderDocs();
+    // Lấy dữ liệu từ Google Sheet
+    fetch(SHEET_API)
+      .then(res => res.json())
+      .then(rows => {
+        // Làm sạch dữ liệu: trim, chuẩn hóa tên môn/lớp
+        allDocs = rows.map(doc => ({
+          ...doc,
+          class: (doc.class||"").trim(),
+          subject: (doc.subject||"").trim().toLowerCase(),
+          title: (doc.title||"").trim(),
+          drive_link: (doc.drive_link||"").trim(),
+          shopee_link: (doc.shopee_link||"").trim(),
+          updatedAt: (doc.updatedAt||"").trim()
+        })).filter(doc => doc.class && doc.subject && doc.title);
+        // Lấy danh sách lớp có trong sheet, sắp xếp giảm dần
+        classList = [...new Set(allDocs.map(doc=>doc.class))].sort((a,b) => b-a);
+        currentClass = classList[0] || "";
+        // Tìm môn đầu tiên có tài liệu ở lớp đầu tiên
+        let found = subjectList.find(subj => allDocs.some(doc => doc.class === currentClass && doc.subject === subj));
+        currentSubject = found || subjectList[0];
+        renderClassTabs();
+        renderSubjectTabs();
+        renderDocs();
+      })
+      .catch(e => {
+        document.getElementById("documentList").innerHTML = "<div style='color:red'>Không tải được dữ liệu từ Google Sheet. Hãy kiểm tra lại ID Sheet và quyền chia sẻ!</div>";
+      });
   </script>
 </body>
 </html>
