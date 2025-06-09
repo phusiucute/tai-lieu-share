@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Kho Tài Liệu - Click Nhận Ngay</title>
+  <style>
+    body { font-family: sans-serif; background: #f4f4f4; padding: 20px; }
+    h1 { text-align: center; }
+    .container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+    .box {
+      background: white;
+      border: 1px solid #ccc;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 10px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .box:hover { background: #e3f2fd; }
+  </style>
+</head>
+<body>
+  <h1>📚 Kho Tài Liệu Miễn Phí</h1>
+  <div class="container">
+    <!-- Lặp 20 ô -->
+    <div class="box" onclick="redirect('doc1')">📄 Tài liệu 1</div>
+    <div class="box" onclick="redirect('doc2')">📄 Tài liệu 2</div>
+    <div class="box" onclick="redirect('doc3')">📄 Tài liệu 3</div>
+    <div class="box" onclick="redirect('doc4')">📄 Tài liệu 4</div>
+    <div class="box" onclick="redirect('doc5')">📄 Tài liệu 5</div>
+    <div class="box" onclick="redirect('doc6')">📄 Tài liệu 6</div>
+    <div class="box" onclick="redirect('doc7')">📄 Tài liệu 7</div>
+    <div class="box" onclick="redirect('doc8')">📄 Tài liệu 8</div>
+    <div class="box" onclick="redirect('doc9')">📄 Tài liệu 9</div>
+    <div class="box" onclick="redirect('doc10')">📄 Tài liệu 10</div>
+    <div class="box" onclick="redirect('doc11')">📄 Tài liệu 11</div>
+    <div class="box" onclick="redirect('doc12')">📄 Tài liệu 12</div>
+    <div class="box" onclick="redirect('doc13')">📄 Tài liệu 13</div>
+    <div class="box" onclick="redirect('doc14')">📄 Tài liệu 14</div>
+    <div class="box" onclick="redirect('doc15')">📄 Tài liệu 15</div>
+    <div class="box" onclick="redirect('doc16')">📄 Tài liệu 16</div>
+    <div class="box" onclick="redirect('doc17')">📄 Tài liệu 17</div>
+    <div class="box" onclick="redirect('doc18')">📄 Tài liệu 18</div>
+    <div class="box" onclick="redirect('doc19')">📄 Tài liệu 19</div>
+    <div class="box" onclick="redirect('doc20')">📄 Tài liệu 20</div>
+  </div>
+
+  <script>
+    const links = {
+      doc1: {
+        shopee: "https://s.shopee.vn/4q3jvLTjgV",
+        drive: "https://drive.google.com/file/d/1e1O2qTFnNdScPWb-u3U44r3S-eWPH915/view"
+      },
+      // Bạn có thể thêm tiếp các link cho doc2 → doc20
+      doc2: { shopee: "https://s.shopee.vn/4q3jvLTjgV", drive: "https://drive.google.com/" },
+      // ...
+    };
+
+    function redirect(docId) {
+      const key = `clicked_${docId}`;
+      const firstTime = !localStorage.getItem(key);
+      localStorage.setItem(key, "true");
+
+      const link = links[docId];
+      if (!link) return alert("Link không tồn tại!");
+
+      window.location.href = firstTime ? link.shopee : link.drive;
+    }
+  </script>
+</body>
+</html>
