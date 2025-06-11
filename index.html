@@ -81,7 +81,6 @@
       .header-title {margin-left:7px;}
     }
 
-    /* Promo Row: Countdown + Sale */
     .promo-row {
       display: flex;
       align-items: stretch;
@@ -91,7 +90,6 @@
       max-width: 1100px;
       flex-wrap: wrap;
     }
-    /* Exam Countdown Card */
     .exam-countdown-card {
       background: #fff;
       border-radius: 19px;
@@ -165,7 +163,6 @@
       display: block;
       letter-spacing: .3px;
     }
-    /* Sale Countdown */
     .sale-countdown-card {
       background: #fff;
       border-radius: 19px;
@@ -222,7 +219,6 @@
       margin-right: 5px;
       margin-left: 1px;
     }
-    /* Share tài liệu đẹp */
     .tabs {
       display: flex;
       gap: 14px;
@@ -304,7 +300,6 @@
       .doc-box {padding:12px 6px;}
       .doc-title {font-size:1.02rem;}
     }
-    /* Promo box */
     .container {
       max-width: 1100px;
       margin: 32px auto 0;
@@ -339,7 +334,7 @@
       transition: box-shadow 0.14s,background 0.14s;
     }
     .promo .ibzalo:hover {background:#fff1f2;box-shadow:0 3px 11px #ffcdd2;}
-    /* Zalo floating button */
+    /* Zalo floating button - LIÊN HỆ */
     .zalo-fab {
       position: fixed;
       bottom: 22px;
@@ -356,12 +351,35 @@
       cursor: pointer;
       border: 4px solid #fff;
       transition: box-shadow 0.17s;
+      font-size: 15px;
+      font-weight: bold;
+      color: #fff;
+      letter-spacing: 0.5px;
+      text-align: center;
+      line-height: 1.1;
+      padding: 0;
+      overflow: hidden;
     }
-    .zalo-fab:hover {box-shadow:0 9px 26px rgba(25,118,210,0.18);}
-    .zalo-fab img, .zalo-fab svg {
-      width: 32px;
-      height: 32px;
+    .zalo-fab span {
       display: block;
+      width: 100%;
+      text-align: center;
+      line-height: 1.15;
+      font-size: 15px;
+      font-weight: bold;
+      color: #fff;
+      padding: 0 2px;
+      white-space: pre-line;
+      word-break: break-word;
+    }
+    @media (max-width:600px) {
+      .zalo-fab {font-size:12px;width:41px;height:41px;}
+      .zalo-fab span {font-size:12px;}
+      .zalo-chat-balloon {font-size:1.03rem;padding:7px 11px;}
+      .promo-row {margin-top:8px;}
+      .footer-inner {font-size:0.97rem;}
+      .main-logo {height:30px;width:30px;}
+      .header-title {font-size:0.93rem;}
     }
     .zalo-chat-balloon {
       display: none;
@@ -396,7 +414,6 @@
       letter-spacing:0.5px;
       box-shadow:0 2px 12px rgba(0,142,230,0.07);
     }
-    /* Footer */
     footer {
       margin-top: 50px;
       background: linear-gradient(90deg, #e3f2fd 0%, #fffde7 100%);
@@ -449,15 +466,6 @@
       .exam-countdown-card,.sale-countdown-card {min-width:0;}
       .sale-countdown-box,.exam-countdown-box {flex-wrap:wrap;}
       .exam-countdown-labels{font-size:1rem;}
-    }
-    @media (max-width:600px) {
-      .zalo-fab {width:41px;height:41px;bottom:10px;right:8px;}
-      .zalo-fab img {width:21px;height:21px;}
-      .zalo-chat-balloon {font-size:1.03rem;padding:7px 11px;}
-      .promo-row {margin-top:8px;}
-      .footer-inner {font-size:0.97rem;}
-      .main-logo {height:30px;width:30px;}
-      .header-title {font-size:0.93rem;}
     }
   </style>
 </head>
@@ -536,7 +544,7 @@
 
   <!-- Zalo Nổi -->
   <div class="zalo-fab" id="zaloFab" title="Nhắn Zalo để được tư vấn ngay!">
-    <img src="zalo.png" alt="Zalo">
+    <span>Liên hệ</span>
   </div>
   <div class="zalo-chat-balloon" id="zaloBalloon">
     💬 <span>Liên hệ Zalo</span> để được tư vấn ngay!
