@@ -6,71 +6,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:500,700&display=swap">
   <style>
-  /* Popup quảng cáo */
-.ads-modal-bg {
-  position: fixed;
-  inset: 0;
-  background: rgba(30,40,53,0.56);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.25s;
-}
-.ads-modal {
-  background: #fff;
-  border-radius: 22px;
-  box-shadow: 0 8px 40px rgba(40,50,70,0.18);
-  max-width: 97vw;
-  max-height: 97vh;
-  position: relative;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: popupShow 0.3s;
-  overflow: hidden;
-}
-.ads-modal img {
-  display: block;
-  max-width: 92vw;
-  max-height: 89vh;
-  border-radius: 22px;
-  background: #fff;
-}
-.ads-modal-close {
-  position: absolute;
-  top: 12px;
-  right: 17px;
-  background: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 39px;
-  height: 39px;
-  font-size: 2.1rem;
-  color: #e53935;
-  cursor: pointer;
-  box-shadow: 0 2px 9px rgba(230,57,53,0.14);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  transition: background 0.13s;
-}
-.ads-modal-close:hover {
-  background: #ffecec;
-}
-@keyframes popupShow {
-  0% { opacity: 0; transform: scale(0.93);}
-  100% { opacity: 1; transform: scale(1);}
-}
-@media (max-width:700px) {
-  .ads-modal {max-width:99vw;max-height:99vh;border-radius:11px;}
-  .ads-modal img {max-width:99vw;max-height:75vh;border-radius:11px;}
-  .ads-modal-close {width:32px;height:32px;font-size:1.4rem;}
-}
     html, body {
-      height: 100%;
+      min-height: 100vh;
       margin: 0;
       padding: 0;
       background: #f7f9fb;
@@ -80,10 +17,7 @@
       -webkit-tap-highlight-color: transparent;
     }
     body {
-      min-height: 100dvh;
-      min-height: 100vh;
-      margin: 0;
-      padding: 0;
+      background: linear-gradient(90deg, #e3f2fd 0%, #fffde7 100%);
     }
     header {
       background: #fff;
@@ -93,385 +27,230 @@
       justify-content: space-between;
       height: 76px;
       position: relative;
+      padding: 0 32px 0 0;
+      z-index: 3;
     }
-    .header-left {
+    .header-left-group {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 18px;
       min-width: 0;
-      padding-left: 32px;
+      padding-left: 20px;
     }
     .main-logo {
-      height: 50px;
-      width: 50px;
-      border-radius: 15px;
+      height: 46px;
+      width: 46px;
+      border-radius: 11px;
       background: #f8f8ff;
       border: 2px solid #1976d2;
       object-fit: cover;
       box-shadow: 0 2px 12px rgba(25, 118, 210, 0.10);
+      margin-right: 8px;
     }
     .header-title {
-      font-size: 1.52rem;
+      font-size: 1.22rem;
       font-weight: 800;
       letter-spacing: 1px;
       color: #1976d2;
       text-shadow: 0 1px 7px rgba(25,118,210,0.07);
       line-height: 1.1;
-      margin-left: 14px;
+      margin-left: 6px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       max-width: 200px;
+      display: inline-block;
     }
-    .header-right {
+    .header-countdown-wrap {
       display: flex;
       align-items: center;
-      gap: 14px;
-      padding-right: 32px;
+      gap: 0;
+      margin-left: auto;
+      min-width: 0;
+      user-select: none;
     }
-    .header-social-btn {
-      width: 38px; height: 38px;
-      border-radius: 50%;
-      background: #f8f8ff;
-      border: 2px solid #e3e3e3;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.14s, box-shadow 0.14s;
-      box-shadow: 0 2px 10px rgba(25,118,210,0.04);
-      cursor: pointer;
-    }
-    .header-social-btn img {
-      width: 22px;
-      height: 22px;
-      display: block;
-    }
-    .header-social-btn:hover { background: #e3f2fd;}
-    @media (max-width:700px) {
-      .header-title {font-size:0.7rem;max-width:800px;}
-      .main-logo {width:35px;height:35px;}
-      .header-left {padding-left:9px;}
-      .header-right {padding-right:9px;gap:7px;}
-      header {height:56px;}
-      .header-social-btn {width:28px;height:28px;}
-      .header-social-btn img {width:16px;height:16px;}
-      .header-title {margin-left:7px;}
-    }
-    @media (max-width:430px) {
-      .header-title {max-width:72px;}
-    }
-
-    .promo-row {
-      display: flex;
-      align-items: stretch;
-      justify-content: center;
-      gap: 36px;
-      margin: 36px auto 0 auto;
-      max-width: 1100px;
-      flex-wrap: wrap;
-    }
-    .exam-countdown-card, .sale-countdown-card {
-      background: #fff;
-      border-radius: 19px;
-      box-shadow: 0 2px 14px rgba(25,118,210,0.09);
-      min-width: 292px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-    }
-    .exam-countdown-card {
-      padding: 20px 30px 22px 25px;
-    }
-    .sale-countdown-card {
-      box-shadow: 0 2px 14px rgba(229,57,53,0.10);
-      min-width: 380px;
-      align-items: flex-end;
-      padding: 16px 14px 12px 14px;
-    }
-    .exam-countdown-title {
-      font-size:1.16rem;
-      font-weight:700;
-      color:#1976d2;
-      margin-bottom: 13px;
-      letter-spacing: 0.2px;
-      text-align: center;
-      width: 100%;
-    }
-    .exam-countdown-box {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      background: #fffbe6;
+    .countdown-label-box {
+      background: linear-gradient(90deg, #ffc107 100%, #ffd54f 100%);
+      color: #fff;
       border-radius: 13px;
-      padding: 17px 12px 13px 15px;
-      font-family: 'Quicksand',sans-serif;
-      font-weight: 700;
-      font-size: 23px;
-      box-shadow: 0 2px 9px rgba(255,193,7,0.10);
-    }
-    .exam-countdown-labels {
-      min-width: 54px;
+      font-weight: 900;
+      font-size: 1.05rem;
+      padding: 10px 17px 10px 17px;
       text-align: center;
-      color: #fff;
-      font-weight: bold;
-      margin-right: 2px;
-      background: linear-gradient(90deg,#ffc107 50%,#ffd54f 100%);
-      border-radius: 12px;
-      padding: 0 4px;
-      font-size:1.12rem;
-      align-self: stretch;
+      min-width: 52px;
+      height: 44px;
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: 0 1px 8px #ffe082;
+      margin-right: 5px;
+      border: none;
+      letter-spacing: 0.5px;
+      transition: box-shadow 0.14s;
     }
-    .exam-countdown-labels div {
-      color: #fff;
+    .countdown-label-box > div {
       width: 100%;
       font-weight: bold;
+      font-size: 1.02rem;
+      line-height: 1.15;
+      letter-spacing: 0.5px;
     }
-    .exam-countdown-number {
-      background: #fff;
-      color: #ee7600;
+    .countdown-main-box {
+      display: flex;
+      align-items: center;
+      background: #fffde7;
       border-radius: 12px;
-      padding: 11px 12px 6px 12px;
-      min-width: 44px;
-      margin-right: 2px;
+      box-shadow: 0 2px 13px rgba(255,193,7,0.13);
+      padding: 0 7px 0 0;
+      height: 44px;
+    }
+    .countdown-block {
+      background: #fff;
+      color: #e65100;
+      border-radius: 10px;
+      padding: 4px 13px 3px 13px;
+      min-width: 36px;
+      margin: 0 7px 0 0;
       text-align: center;
-      font-size: 1.19rem;
+      font-size: 1.08rem;
+      font-weight: 700;
       display: flex;
       flex-direction: column;
       align-items: center;
       font-family: inherit;
       box-shadow: 0 1px 6px #ffecb3;
+      border: 2px solid #ffe082;
+      transition: background 0.13s, color 0.13s;
     }
-    .exam-countdown-unit {
+    .countdown-block:last-child {margin-right:0;}
+    .countdown-unit {
       color: #b26a00;
-      font-size: 0.92rem;
-      font-weight: 600;
-      margin-top: 2px;
+      font-size: 0.91rem;
+      font-weight: 700;
+      margin-top: 0.5px;
       display: block;
-      letter-spacing: .3px;
+      letter-spacing: .2px;
     }
-    .sale-countdown-box {
+    @media (max-width:900px) {
+      .header-countdown-wrap {flex-shrink:1;}
+      .countdown-label-box {padding:5px 8px;height:30px;font-size:0.91rem;min-width:32px;}
+      .countdown-main-box {height:30px;}
+      .countdown-block{font-size:0.82rem;min-width:18px;padding:3px 7px 1.5px 7px;}
+      .countdown-unit{font-size:0.68rem;}
+      .main-logo{height:26px;width:26px;}
+      .header-title{font-size:0.8rem;}
+      header{height:54px;}
+    }
+    .ads-modal-bg {
+      position: fixed;
+      inset: 0;
+      background: rgba(30,40,53,0.56);
+      z-index: 9999;
       display: flex;
       align-items: center;
-      gap: 10px;
-      background: linear-gradient(90deg,#e53935 80%,#ffb3b3 100%);
-      border-radius: 13px;
-      padding: 14px 24px 14px 19px;
-      color: #fff;
-      font-size: 1.18rem;
-      font-weight: 800;
-      box-shadow:0 2px 12px rgba(229,57,53,0.08);
-      border:2.5px solid #d32f2f;
-      letter-spacing: 1px;
-      position: relative;
-      min-width: 320px;
-      justify-content: flex-end;
+      justify-content: center;
+      transition: background 0.25s;
     }
-    .sale-countdown-label {
-      font-weight: bold;
-      font-size: 1.19rem;
-      margin-right: 12px;
-      letter-spacing: 1.4px;
-      color: #fff;
-      text-shadow:0 1px 5px #e57373;
-    }
-    .sale-countdown-num {
+    .ads-modal {
       background: #fff;
+      border-radius: 22px;
+      box-shadow: 0 8px 40px rgba(40,50,70,0.18);
+      max-width: 97vw;
+      max-height: 97vh;
+      position: relative;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: popupShow 0.3s;
+      overflow: hidden;
+    }
+    .ads-modal img {
+      display: block;
+      max-width: 92vw;
+      max-height: 89vh;
+      border-radius: 22px;
+      background: #fff;
+    }
+    .ads-modal-close {
+      position: absolute;
+      top: 12px;
+      right: 17px;
+      background: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 39px;
+      height: 39px;
+      font-size: 2.1rem;
       color: #e53935;
-      padding: 3px 13px;
-      border-radius: 8px;
-      font-size: 1.19rem;
-      font-weight: 900;
-      margin-right: 2px;
-      min-width: 33px;
-      display: inline-block;
-      text-align: center;
-      box-shadow: 0 2px 10px rgba(229,57,53,0.11);
+      cursor: pointer;
+      box-shadow: 0 2px 9px rgba(230,57,53,0.14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      transition: background 0.13s;
     }
-    .sale-countdown-unit {
-      font-size: 1.01rem;
-      font-weight: 700;
-      color: #fffde7;
-      margin-right: 5px;
-      margin-left: 1px;
+    .ads-modal-close:hover {
+      background: #ffecec;
     }
-
-
-    /* MOBILE OPTIMIZATION - SALE COUNTDOWN = EXAM COUNTDOWN STYLE */
-    @media (max-width: 700px) {
-      .promo-row {
-        gap: 13px;
-        margin: 12px auto 0 auto;
-        flex-direction: column;
-        align-items: stretch;
-        max-width: 100vw;
-      }
-      .exam-countdown-card, .sale-countdown-card {
-        padding: 11px 4px 11px 4px;
-        min-width: 0;
-        border-radius: 13px;
-        width: 98vw;
-        margin: 0 auto;
-        box-sizing: border-box;
-      }
-      .exam-countdown-title {
-        font-size: 1rem;
-        margin-bottom: 9px;
-        text-align: center;
-      }
-      .exam-countdown-box {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px 6px;
-        background: #fffbe6;
-        border-radius: 13px;
-        padding: 9px 2px 9px 2px;
-        font-size: 17px;
-        justify-items: center;
-        width: 100%;
-        box-sizing: border-box;
-      }
-      .exam-countdown-labels {
-        grid-column: 1 / span 2;
-        font-size: .89rem;
-        min-width: 0;
-        padding: 9px 0;
-        border-radius: 10px;
-        margin: 0 auto 2px auto;
-        width: 92%;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-      }
-      .exam-countdown-number {
-        min-width: 0;
-        width: 92%;
-        font-size: 0.99rem;
-        padding: 12px 0 8px 0;
-        margin: 0 auto;
-        border-radius: 8px;
-        text-align: center;
-        box-sizing: border-box;
-      }
-      .exam-countdown-unit { font-size: 0.92rem; }
-
-      /*** SALE COUNTDOWN MOBILE STYLE MATCHES EXAM ***/
-      .sale-countdown-card {
-        min-width: 0;
-        border-radius: 13px;
-        align-items: stretch;
-        padding: 8px 2px 8px 2px;
-        width: 98vw;
-        margin: 0 auto;
-        box-sizing: border-box;
-      }
-      .sale-countdown-box {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px 6px;
-        background: linear-gradient(90deg,#e53935 80%,#ffb3b3 100%);
-        border-radius: 13px;
-        padding: 12px 2px 12px 2px;
-        font-size: 1rem;
-        align-items: center;
-        justify-items: center;
-        width: 100%;
-        box-sizing: border-box;
-        border: 2.5px solid #d32f2f;
-        box-shadow:0 2px 12px rgba(229,57,53,0.08);
-      }
-      .sale-countdown-label {
-        grid-column: 1 / span 2;
-        font-size: 1.01rem;
-        margin-bottom: 3px;
-        letter-spacing: 1.1px;
-        text-align: center;
-        width: 100%;
-        font-weight: bold;
-        color: #fff;
-        text-shadow:0 1px 5px #e57373;
-      }
-      .sale-countdown-num {
-        font-size: 1.04rem;
-        min-width: 0;
-        width: 92%;
-        margin: 0 auto;
-        padding: 12px 0 8px 0;
-        border-radius: 8px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        background: #fff;
-        color: #e53935;
-        font-weight: 900;
-        box-shadow: 0 2px 10px rgba(229,57,53,0.11);
-      }
-      .sale-countdown-unit {
-        font-size: 0.97rem;
-        color: #fffde7;
-        margin: 0 0 0 0;
-        font-weight: bold;
-      }
+    @keyframes popupShow {
+      0% { opacity: 0; transform: scale(0.93);}
+      100% { opacity: 1; transform: scale(1);}
     }
-
-    /* PROMO BOX - TỐI ƯU MOBILE */
+    @media (max-width:700px) {
+      .ads-modal {max-width:99vw;max-height:99vh;border-radius:11px;}
+      .ads-modal img {max-width:99vw;max-height:75vh;border-radius:11px;}
+      .ads-modal-close {width:32px;height:32px;font-size:1.4rem;}
+      .header-left-group {padding-left:4vw;}
+      .header-title{margin-left:2px;}
+      .main-logo{margin-right:2px;}
+    }
     .container {
       max-width: 1100px;
-      margin: 32px auto 0;
-      background: #fff;
+      margin: 42px auto 0;
+      background: transparent;
       padding: 32px 34px 30px 34px;
       border-radius: 16px;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+      box-shadow: none;
     }
     .promo {
       margin: 0 auto 26px auto;
-      background: linear-gradient(90deg, #f8ffda 80%, #e4eeff 100%);
-      border: 2px solid #ffb300;
-      border-radius: 14px;
-      padding: 20px 28px;
+      background: #fff;
+      border: none;
+      border-radius: 15px;
+      padding: 26px 34px 20px 34px;
       font-size: 1.13rem;
-      line-height: 1.8;
-      box-shadow: 0 2px 10px rgba(255,193,7,0.10);
-      position: relative;
-      color: #303030;
-      border-bottom: 4px solid #ffb300;
+      line-height: 1.7;
+      color: #222;
       font-weight: 500;
+      box-shadow: 0 5px 36px rgba(25,118,210,0.07), 0 1.5px 7px rgba(25,118,210,0.04);
     }
-    .promo strong { color:#d84315; font-size:1.09em;}
-    .promo u {color: #1565c0;}
+    .promo strong { color:#222; font-size:1.09em;}
+    .promo u {color: #1976d2;}
     .promo .ibzalo {
-      color:#e53935;font-size:1.13em;background:rgba(255,235,238,0.94);
-      padding:2px 8px;border-radius:8px;
-      box-shadow:0 1px 5px #ffeaea;
-      font-weight: 900;
-      letter-spacing: 1px;
-      margin: 0 2px;
-      cursor: pointer;
-      text-decoration: underline dotted #e53935 1.5px;
-      transition: box-shadow 0.14s,background 0.14s;
+      color:#e53935;
+      background:rgba(255,235,238,0.97);
+      padding:2px 8px 2px 8px;
+      border-radius:8px;
+      font-weight:900;
+      margin:0 2px;
+      cursor:pointer;
+      text-decoration:underline dotted #e53935 1.5px;
+      box-shadow:0 1px 7px #ffeaea;
+      transition:box-shadow 0.14s,background 0.14s;
     }
-    .promo .ibzalo:hover {background:#fff1f2;box-shadow:0 3px 11px #ffcdd2;}
+    .promo .ibzalo:hover {
+      background:#ffd6d6;
+      box-shadow:0 3px 11px #ffcdd2;
+    }
     .promo .promo-combo {display:block;margin:10px 0 3px 0;font-weight:700;color:#1976d2;}
     .promo-highlight {color:#1976d2;font-weight:700;}
     .promo-list {margin:0 0 0 16px;}
     .promo-list li {margin-bottom:3px;}
-    @media (max-width: 700px) {
-      .container {padding:10px 1vw;}
-      .promo {
-        padding:11px 5px;
-        margin: 0 auto 11px auto;
-        font-size: 0.97rem;
-        border-radius: 11px;
-        line-height: 1.65;
-        word-break: break-word;
-      }
-      .promo-list {padding-left: 18px;}
-    }
-    /* TABS, SUBJECTS, DOCS (giữ nguyên) */
+    .promo b, .promo strong {font-weight: bold;}
+    .promo .promo-combo {margin-top:10px;}
+    .promo .promo-list {margin-bottom:0;}
     .tabs {
       display: flex;
       gap: 14px;
@@ -525,14 +304,14 @@
       margin-bottom: 18px;
     }
     .doc-box {
-      background: #fafaff;
-      border: 1.5px solid #d0d6e0;
+      background: #fff;
+      border: 1.5px solid #e3e8ef;
       border-radius: 12px;
       padding: 20px 10px 12px 10px;
       text-align: left;
-      box-shadow: 1px 2px 6px rgba(0,0,0,0.07);
+      box-shadow: 0 2px 8px rgba(25,118,210,0.07);
       cursor: pointer;
-      transition: box-shadow 0.2s;
+      transition: box-shadow 0.2s, border-color 0.13s;
       position:relative;
       min-height: 86px;
       display: flex;
@@ -540,7 +319,7 @@
       justify-content: center;
       font-size: 1.04rem;
     }
-    .doc-box:hover { box-shadow:0 6px 18px rgba(25,118,210,0.09);}
+    .doc-box:hover { box-shadow:0 6px 18px rgba(25,118,210,0.09); border-color: #1976d2;}
     .doc-title { font-size:1.13rem; font-weight:600; color:#1976d2;}
     .doc-date { font-size:0.97rem; color:#888; margin-top:7px;}
     .doc-icon {font-size: 1.31rem; vertical-align:middle; margin-right:6px;}
@@ -548,12 +327,12 @@
       .doc-list { grid-template-columns:repeat(2,1fr);}
     }
     @media (max-width:700px) {
+      .promo {padding:11px 5px;}
       .tabs, .subjects { gap:6px;}
       .doc-list { grid-template-columns:1fr;}
       .doc-box {padding:12px 6px;}
       .doc-title {font-size:1.02rem;}
     }
-    /* ZALO BUTTON */
     .zalo-fab {
       position: fixed;
       bottom: 22px;
@@ -628,29 +407,29 @@
       letter-spacing:0.5px;
       box-shadow:0 2px 12px rgba(0,142,230,0.07);
     }
-    /* Footer */
     footer {
+      background: transparent;
       margin-top: 50px;
-      background: linear-gradient(90deg, #e3f2fd 0%, #fffde7 100%);
-      padding: 33px 0 24px 0;
+      padding: 0 0 40px 0;
       color: #1959a0;
-      border-top: 2.5px solid #e3f2fd;
       font-size: 1.11rem;
       letter-spacing: .3px;
       text-align: center;
-      box-shadow: 0 -2px 16px rgba(25,118,210,0.06);
       font-weight: 600;
       border-radius: 31px 31px 0 0 / 19px 19px 0 0;
       position: relative;
       overflow: hidden;
+      border-top: none;
+      box-shadow: none;
     }
     .footer-inner {
       display: inline-block;
       background: #fff;
       padding: 17px 30px 14px 30px;
-      border-radius: 14px;
-      box-shadow: 0 3px 24px rgba(25,118,210,0.08);
+      border-radius: 18px;
+      box-shadow: 0 6px 32px rgba(25,118,210,0.10), 0 1.5px 7px rgba(25,118,210,0.04);
       font-size: 1.07rem;
+      margin-top: 32px;
     }
     .footer-strong {
       color: #e53935;
@@ -667,22 +446,9 @@
       transition: color 0.14s;
     }
     .footer-link:hover { color: #d84315;}
-    @media (max-width:1050px) {
-      .promo-row {flex-direction:column;align-items:stretch;gap:18px;}
-      .sale-countdown-card {align-items:center;}
-      .exam-countdown-card {align-items:center;}
-      .container {padding:19px 5vw;}
-    }
-    @media (max-width:700px) {
-      .footer-inner {padding:11px 5vw;}
-      .footer-inner {font-size:0.97rem;}
-      .main-logo {height:30px;width:30px;}
-      .header-title {font-size:0.93rem;}
-    }
   </style>
 </head>
 <script>
-  // Popup quảng cáo
   window.addEventListener("DOMContentLoaded", function() {
     const bg = document.getElementById('adsModalBg');
     const closeBtn = document.getElementById('adsModalClose');
@@ -693,97 +459,93 @@
     bg.onclick = function(e) {
       if (e.target === bg) closeAds();
     }
-    // Tự động đóng sau 12 giây nếu chưa đóng
     setTimeout(closeAds, 12000);
   });
 </script>
 <body>
   <!-- POPUP ADS -->
-<div class="ads-modal-bg" id="adsModalBg">
-  <div class="ads-modal">
-    <button class="ads-modal-close" id="adsModalClose" aria-label="Đóng quảng cáo">&times;</button>
-    <img src="ads.png" alt="Quảng cáo nổi bật">
+  <div class="ads-modal-bg" id="adsModalBg">
+    <div class="ads-modal">
+      <button class="ads-modal-close" id="adsModalClose" aria-label="Đóng quảng cáo">&times;</button>
+      <img src="ads.png" alt="Quảng cáo nổi bật" onerror="this.style.display='none'">
+    </div>
   </div>
-</div>
   <!-- HEADER -->
   <header>
-    <div class="header-left">
+    <div class="header-left-group">
       <img src="logo.png" alt="Logo" class="main-logo" onerror="this.style.display='none'">
       <div class="header-title">v1.0</div>
     </div>
-    <div class="header-right">
-      <a href="https://zalo.me/0788559492" target="_blank" class="header-social-btn" title="Zalo">
-        <img src="zalo.png" alt="Zalo">
-      </a>
-      <a href="https://www.tiktok.com/@khoahocgiasiure" target="_blank" class="header-social-btn" title="TikTok">
-        <img src="tiktok.png" alt="TikTok">
-      </a>
-      <a href="https://www.threads.net/@khoahocgiasiure" target="_blank" class="header-social-btn" title="Threads">
-        <img src="logothreads.png" alt="Threads">
-      </a>
+    <div class="header-countdown-wrap">
+      <div class="countdown-label-box">
+        <div>THPT<br>QG</div>
+      </div>
+      <div class="countdown-main-box">
+        <div class="countdown-block">
+          <span id="countdown-day">00</span>
+          <span class="countdown-unit">Ngày</span>
+        </div>
+        <div class="countdown-block">
+          <span id="countdown-hour">00</span>
+          <span class="countdown-unit">Giờ</span>
+        </div>
+        <div class="countdown-block">
+          <span id="countdown-minute">00</span>
+          <span class="countdown-unit">Phút</span>
+        </div>
+        <div class="countdown-block">
+          <span id="countdown-second">00</span>
+          <span class="countdown-unit">Giây</span>
+        </div>
+      </div>
     </div>
   </header>
-  <!-- ROW: Đếm ngược + Sale -->
-  <div class="promo-row">
-    <!-- Countdown -->
-    <div class="exam-countdown-card">
-      <div class="exam-countdown-title">Đếm ngược kỳ thi</div>
-      <div class="exam-countdown-box">
-        <div class="exam-countdown-labels">
-          <div>THPT<br>QG</div>
-        </div>
-        <div class="exam-countdown-number"><span id="countdown-day">00</span><span class="exam-countdown-unit">Ngày</span></div>
-        <div class="exam-countdown-number"><span id="countdown-hour">00</span><span class="exam-countdown-unit">Giờ</span></div>
-        <div class="exam-countdown-number"><span id="countdown-minute">00</span><span class="exam-countdown-unit">Phút</span></div>
-        <div class="exam-countdown-number"><span id="countdown-second">00</span><span class="exam-countdown-unit">Giây</span></div>
-      </div>
-    </div>
-    <!-- Sale countdown -->
-    <div class="sale-countdown-card">
-      <div class="sale-countdown-box">
-        <span class="sale-countdown-label">SALE GIÁ SỐC</span>
-        <span id="sale-day" class="sale-countdown-num">00</span><span class="sale-countdown-unit">ngày</span>
-        <span id="sale-hour" class="sale-countdown-num">00</span><span class="sale-countdown-unit">giờ</span>
-        <span id="sale-min" class="sale-countdown-num">00</span><span class="sale-countdown-unit">phút</span>
-        <span id="sale-sec" class="sale-countdown-num">00</span><span class="sale-countdown-unit">giây</span>
-      </div>
-    </div>
-  </div>
   <div class="container">
     <div class="promo">
-      <strong>🎓 KHÓA HỌC XPS – LỚP 10, 11, 12 – CẤP TỐC, GIÁ RẺ</strong><br>
-      <span style="color:#1976d2;font-weight:600;">Ưu đãi tháng này – Học trọn gói từ A–Z, chọn thầy cô theo gu của bạn!</span><br>
-      <span class="promo-combo"><u>Combo Lớp 12 – dành cho 2K7:</u></span>
-      <ul class="promo-list">
-        <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá </span> nhé</li>
-        <li>📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025</li>
-      </ul>
-      <span class="promo-combo"><u>Combo Lớp 12 – dành cho 2K8:</u></span>
-      <ul class="promo-list">
+      <span style="font-size:1.21em;font-weight:800;color:#222;">
+        <span style="font-size:1.18em;">🎓</span>
+        KHÓA HỌC XPS – LỚP 10, 11, 12 – CẤP TỐC, GIÁ RẺ
+      </span><br>
+      <span style="color:#1976d2;font-weight:600;">
+        Ưu đãi tháng này – Học trọn gói từ A–Z, chọn thầy cô theo gu của bạn!
+      </span><br>
+      <a style="font-weight:700;color:#1976d2;text-decoration:underline;" href="#">Combo Lớp 12 – dành cho 2K7:</a>
+      <ul>
         <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
         <li>📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025</li>
       </ul>
-      <span class="promo-combo"><u>Combo Lớp 11/10 – dành cho 2K9/2K10:</u></span>
-      <ul class="promo-list">
+      <a style="font-weight:700;color:#1976d2;text-decoration:underline;" href="#">Combo Lớp 12 – dành cho 2K8:</a>
+      <ul>
+        <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
+        <li>📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025</li>
+      </ul>
+      <a style="font-weight:700;color:#1976d2;text-decoration:underline;" href="#">Combo Lớp 11/10 – dành cho 2K9/2K10:</a>
+      <ul>
         <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
         <li>📌 Có cả tổ hợp: Toán, Văn, Anh, KHTN, KHXH</li>
         <li>📌 TẶNG: Khóa học lớp 10 bản 2025</li>
       </ul>
-      <span class="promo-highlight">🆓 ĐƯỢC HỌC THỬ 24 GIỜ MIỄN PHÍ trước khi đăng ký</span><br>
-      ♻️ Cập nhật bài giảng mới mỗi tuần, có file luyện đề, hệ thống ôn tập cuối kỳ<br>
-      <b style="color:#1976d2;">🎯 Đặc biệt:</b><br>
-      <ul class="promo-list">
+      <p>
+        <span style="color:#1976d2;font-weight:800;text-decoration:underline;">
+          <span style="background:#e3f2fd;padding:1px 8px 1px 5px;border-radius:6px;">🆓 ĐƯỢC HỌC THỬ 24 GIỜ MIỄN PHÍ</span>
+        </span> trước khi đăng ký<br>
+        <span style="color:#1976d2;">♻️</span> Cập nhật bài giảng mới mỗi tuần, có file luyện đề, hệ thống ôn tập cuối kỳ
+        <br>
+        <span style="color:#9c27b0;font-weight:700;"><span style="font-size:1.13em;">💡</span> Đặc biệt:</span>
+      </p>
+      <ul>
         <li>Khóa TOEIC cô Mai Phương: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
         <li>Khóa IELTS nền tảng – nâng band: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
         <li>Khóa sinh viên ôn lại gốc lớp 12: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
       </ul>
-      <span style="color:#d84315;font-weight:600;">⏳ Ưu đãi giới hạn trong tháng – nhanh tay đăng ký để không bỏ lỡ!</span>
+      <span style="color:#e65100;font-weight:700;font-size:1.08em;">
+        <span style="font-size:1.15em;">⏳</span> Ưu đãi giới hạn trong tháng – nhanh tay đăng ký để không bỏ lỡ!
+      </span>
     </div>
     <div class="tabs" id="classTabs"></div>
     <div class="subjects" id="subjectTabs"></div>
     <div class="doc-list" id="documentList"></div>
   </div>
-  <!-- Zalo Nổi -->
   <div class="zalo-fab" id="zaloFab" title="Nhắn Zalo để được tư vấn ngay!">
     <span>Liên hệ</span>
   </div>
@@ -825,26 +587,6 @@
     setInterval(updateExamCountdown, 1000);
     updateExamCountdown();
 
-    // Đếm ngược SALE (ví dụ đến hết ngày 16/6/2025 23:59)
-    const saleEnd = new Date("2025-06-16T23:59:59+07:00");
-    function updateSaleCountdown() {
-      const now = new Date();
-      let diff = saleEnd - now;
-      let days = 0, hours = 0, minutes = 0, seconds = 0;
-      if (diff > 0) {
-        days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-        minutes = Math.floor((diff / (1000 * 60)) % 60);
-        seconds = Math.floor((diff / 1000) % 60);
-      }
-      document.getElementById("sale-day").textContent = days.toString().padStart(2, "0");
-      document.getElementById("sale-hour").textContent = hours.toString().padStart(2, "0");
-      document.getElementById("sale-min").textContent = minutes.toString().padStart(2, "0");
-      document.getElementById("sale-sec").textContent = seconds.toString().padStart(2, "0");
-    }
-    setInterval(updateSaleCountdown, 1000);
-    updateSaleCountdown();
-
     // Zalo FAB chat
     const zaloFab = document.getElementById('zaloFab');
     const zaloBalloon = document.getElementById('zaloBalloon');
@@ -863,32 +605,59 @@
     });
     setTimeout(()=>{zaloBalloon.style.display='block'; zaloBalloonTimer = setTimeout(()=>{zaloBalloon.style.display='none'}, 4000);},1500);
 
-    // === GOOGLE SHEET CODE GIỮ NGUYÊN ===
+    // ==== Tab đại học/hsk/ielts/toeic... sau lớp 10 11 12, không phân môn, chỉ hiện khi có file ====
     const SHEET_API = "https://opensheet.elk.sh/1hXvKb09Bu5xzqFAlgRjZ1S3Z0uQ8wjfDVQQn4uAuYH0/Sheet1";
     const subjectList = ["toán","lý","hóa","sinh","sử","địa","văn","tiếng anh"];
+    const classListDefault = ["10", "11", "12"];
+    const extraCategories = ["Đại học", "HSK", "IELTS", "TOEIC"];
     let allDocs = [];
     let classList = [];
+    let extraList = [];
     let currentClass = "";
     let currentSubject = subjectList[0];
+    let currentExtra = "";
 
     function renderClassTabs() {
       const classTabs = document.getElementById("classTabs");
       classTabs.innerHTML = "";
+      // Lớp 10-11-12
       classList.forEach(cls => {
         const tab = document.createElement("div");
-        tab.className = "tab" + (cls===currentClass ? " active" : "");
+        tab.className = "tab" + (cls===currentClass && !currentExtra ? " active" : "");
         tab.innerText = "Lớp " + cls;
         tab.onclick = () => {
           currentClass = cls;
+          currentExtra = "";
           let found = subjectList.find(subj => allDocs.some(doc => doc.class === cls && doc.subject === subj));
           currentSubject = found || subjectList[0];
           renderClassTabs(); renderSubjectTabs(); renderDocs();
         };
         classTabs.appendChild(tab);
       });
+      // Các mục đặc biệt (Đại học, HSK, IELTS, TOEIC)
+      extraList.forEach(cat => {
+        const tab = document.createElement("div");
+        tab.className = "tab" + (cat===currentExtra ? " active" : "");
+        tab.innerText = cat;
+        tab.onclick = () => {
+          currentExtra = cat;
+          currentClass = "";
+          renderClassTabs();
+          renderSubjectTabs();
+          renderDocs();
+        };
+        classTabs.appendChild(tab);
+      });
     }
     function renderSubjectTabs() {
       const subjectTabs = document.getElementById("subjectTabs");
+      // Ẩn subject khi là các tab đặc biệt
+      if (currentExtra) {
+        subjectTabs.innerHTML = "";
+        subjectTabs.style.display = "none";
+        return;
+      }
+      subjectTabs.style.display = "";
       subjectTabs.innerHTML = "";
       subjectList.forEach(sub => {
         if (allDocs.some(doc => doc.class === currentClass && doc.subject === sub)) {
@@ -903,7 +672,12 @@
     function renderDocs() {
       const docList = document.getElementById("documentList");
       docList.innerHTML = "";
-      const docs = allDocs.filter(doc => doc.class === currentClass && doc.subject === currentSubject);
+      let docs = [];
+      if (currentExtra) {
+        docs = allDocs.filter(doc => doc.class === currentExtra);
+      } else {
+        docs = allDocs.filter(doc => doc.class === currentClass && doc.subject === currentSubject);
+      }
       if (!docs || docs.length === 0) {
         docList.innerHTML = "<div style='grid-column:1/-1;text-align:center;color:#999;font-size:1.1rem'>Chưa có tài liệu cho mục này.</div>";
         return;
@@ -940,9 +714,14 @@
           drive_link: (doc.drive_link||"").trim(),
           shopee_link: (doc.shopee_link||"").trim(),
           updatedAt: (doc.updatedAt||"").trim()
-        })).filter(doc => doc.class && doc.subject && doc.title);
-        classList = [...new Set(allDocs.map(doc=>doc.class))].sort((a,b) => b-a);
+        })).filter(doc => doc.class && doc.title);
+        // Lớp 10/11/12
+        classList = classListDefault.filter(cls => allDocs.some(doc => doc.class === cls));
+        // Các mục đặc biệt (chỉ hiện nếu trong sheet có file thuộc mục đó)
+        extraList = extraCategories.filter(cat => allDocs.some(doc => doc.class === cat));
+        // Mặc định: ưu tiên lớp 12, sau đó lớp 11, 10, sau đó đến extra
         currentClass = classList[0] || "";
+        currentExtra = "";
         let found = subjectList.find(subj => allDocs.some(doc => doc.class === currentClass && doc.subject === subj));
         currentSubject = found || subjectList[0];
         renderClassTabs();
