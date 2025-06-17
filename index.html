@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:500,700&display=swap">
   <style>
+    /* ... giữ nguyên toàn bộ phần CSS như bản gốc của bạn ... */
     html, body {
       min-height: 100vh;
       margin: 0;
@@ -474,7 +475,7 @@
   <header>
     <div class="header-left-group">
       <img src="logo.png" alt="Logo" class="main-logo" onerror="this.style.display='none'">
-      <div class="header-title">v1.1</div>
+      <div class="header-title">v1.2</div>
     </div>
     <div class="header-countdown-wrap">
       <div class="countdown-label-box">
@@ -511,17 +512,17 @@
       </span><br>
       <a style="font-weight:700;color:#1976d2;text-decoration:underline;" href="#">Combo Lớp 12 – dành cho 2K7:</a>
       <ul>
-        <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
+        <li>✅ Giá: <span class="ibzalo" id="hotlinePromo1" style="cursor:pointer"></span> nhé</li>
         <li>📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025</li>
       </ul>
       <a style="font-weight:700;color:#1976d2;text-decoration:underline;" href="#">Combo Lớp 12 – dành cho 2K8:</a>
       <ul>
-        <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
+        <li>✅ Giá: <span class="ibzalo" id="hotlinePromo2" style="cursor:pointer"></span> nhé</li>
         <li>📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025</li>
       </ul>
       <a style="font-weight:700;color:#1976d2;text-decoration:underline;" href="#">Combo Lớp 11/10 – dành cho 2K9/2K10:</a>
       <ul>
-        <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
+        <li>✅ Giá: <span class="ibzalo" id="hotlinePromo3" style="cursor:pointer"></span> nhé</li>
         <li>📌 Có cả tổ hợp: Toán, Văn, Anh, KHTN, KHXH</li>
         <li>📌 TẶNG: Khóa học lớp 10 bản 2025</li>
       </ul>
@@ -534,9 +535,9 @@
         <span style="color:#9c27b0;font-weight:700;"><span style="font-size:1.13em;">💡</span> Đặc biệt:</span>
       </p>
       <ul>
-        <li>Khóa TOEIC cô Mai Phương: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
-        <li>Khóa IELTS nền tảng – nâng band: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
-        <li>Khóa sinh viên ôn lại gốc lớp 12: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
+        <li>Khóa TOEIC cô Mai Phương: <span class="ibzalo" id="hotlinePromo4" style="cursor:pointer"></span> nhé</li>
+        <li>Khóa IELTS nền tảng – nâng band: <span class="ibzalo" id="hotlinePromo5" style="cursor:pointer"></span> nhé</li>
+        <li>Khóa sinh viên ôn lại gốc lớp 12: <span class="ibzalo" id="hotlinePromo6" style="cursor:pointer"></span> nhé</li>
       </ul>
       <span style="color:#e65100;font-weight:700;font-size:1.08em;">
         <span style="font-size:1.15em;">⏳</span> Ưu đãi giới hạn trong tháng – nhanh tay đăng ký để không bỏ lỡ!
@@ -550,12 +551,12 @@
     <span>Liên hệ</span>
   </div>
   <div class="zalo-chat-balloon" id="zaloBalloon">
-    💬 <span>Liên hệ Zalo</span> để được tư vấn ngay!
+    💬 <span id="hotlineBalloon"></span> để được tư vấn ngay!
   </div>
   <footer>
     <div class="footer-inner">
       <span class="footer-strong">Liên hệ:</span>
-      <a href="https://zalo.me/0788559492" class="footer-link" target="_blank" rel="noopener">Zalo 0788559492</a>
+      <a href="#" id="footerHotline" class="footer-link" target="_blank" rel="noopener"></a>
       &bull;
       <a href="https://www.tiktok.com/@khoahocgiasiure" class="footer-link" target="_blank" rel="noopener">TikTok @khoahocgiasiure</a>
       &bull;
@@ -587,12 +588,46 @@
     setInterval(updateExamCountdown, 1000);
     updateExamCountdown();
 
+    // ==== Thay số Zalo theo khung giờ ====
+    function getZaloHotline() {
+      const now = new Date();
+      let hour = now.getHours();
+      // 0:00 - 14:59 là 0702739492, 15:00 - 23:59 là 0788559492
+      if (hour >= 0 && hour < 15) return { phone: "Võ Như Linh", link: "https://zalo.me/0702739492" };
+      return { phone: "FUS", link: "https://zalo.me/0788559492" };
+    }
+    function renderZaloHotline() {
+      const hotline = getZaloHotline();
+      // Các khối promo
+      for(let i=1;i<=6;i++) {
+        let el = document.getElementById('hotlinePromo'+i);
+        if(el) {
+          el.textContent = "click vào đây để được báo giá (" + hotline.phone + ")";
+          el.onclick = () => window.open(hotline.link,'_blank');
+        }
+      }
+      // Balloon
+      let elBalloon = document.getElementById('hotlineBalloon');
+      if(elBalloon) {
+        elBalloon.textContent = "Liên hệ Zalo " + hotline.phone;
+      }
+      // Footer
+      let elFooter = document.getElementById('footerHotline');
+      if(elFooter) {
+        elFooter.textContent = "Zalo " + hotline.phone;
+        elFooter.href = hotline.link;
+      }
+    }
+    setInterval(renderZaloHotline, 30 * 1000); // Update mỗi 30s để đổi số khi chuyển giờ
+    renderZaloHotline();
+
     // Zalo FAB chat
     const zaloFab = document.getElementById('zaloFab');
     const zaloBalloon = document.getElementById('zaloBalloon');
     let zaloBalloonTimer = null;
     zaloFab.onclick = function() {
-      window.open('https://zalo.me/0788559492', '_blank');
+      const hotline = getZaloHotline();
+      window.open(hotline.link, '_blank');
     };
     zaloFab.addEventListener('mouseenter', ()=>{
       zaloBalloon.style.display = 'block';
